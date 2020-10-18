@@ -6,7 +6,7 @@ export default class SwapiService  {
     async getResource(url){
         const res = await fetch(`${this._apiBase}${url}`);
 
-        if (!res.ok){
+         if (!res.ok){
             throw new Error(`could not fetch ${url}` +
                 `, received ${res.status}`)
         }
@@ -25,8 +25,8 @@ export default class SwapiService  {
         return res.results;
     }
 
-    getPlanet(id){
-        return this.getResource(`/planet/${id}/`);
+    async getPlanet(id){
+        return await this.getResource(`/planets/${id}/`);
     }
     async getAllStarships(){
         const res = await this.getResource('/starships/');
